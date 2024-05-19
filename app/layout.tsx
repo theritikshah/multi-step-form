@@ -28,7 +28,7 @@ export default function RootLayout({
             <section className="flex  max-md:mt-[-4.7rem]  max-md:m-5 max-md:mb-24 rounded-3xl bg-white max-md:p-5 max-md:py-10  max-md:w-[calc(100%-1.25rem*2)]">
               {children}
             </section>
-            <footer className="flex items-center max-md:fixed max-md:bottom-0 bg-white  max-md:left-0 max-md:w-full  max-md:p-5 max-md:bottom-0 md:mt-auto  justify-between items-end">
+            <footer className="flex items-center max-md:fixed max-md:bottom-0 bg-white  max-md:left-0 max-md:w-full  max-md:p-5  md:mt-auto  justify-between ">
               <button className="text-cool-gray">Go Back</button>
               <button className="bg-marine-blue text-white p-2 px-6 rounded-lg">
                 Next
