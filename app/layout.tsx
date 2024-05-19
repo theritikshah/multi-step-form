@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.scss";
+import "./globals.css";
+import Stepper from "./components/common/Stepper";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,9 +12,31 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const stepperValues = [
+    { label: "Your Info", value: "your-info" },
+    { label: "Select-Plan", value: "select-plan" },
+    { label: "Add-ons", value: "add-ons" },
+    { label: "Summary", value: "summary" },
+  ];
+
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className=" flex h-full">
+      <body className=" flex max-md:relative w-full h-full flex-grow-1 max-md:justify-start max-md:items-start justify-center items-center bg-magnolia">
+        <div className="flex  max-md:flex-col rounded-3xl md:bg-white max-md:bg-magnolia w-fit max-md:w-full max-md:p-0 p-4 ">
+          <Stepper values={stepperValues} />
+          <section className="flex flex-col    bg-white max-md:bg-magnolia max-md:mx-auto  p-20 max-md:p-0 max-md:w-full max-md:m-4  pt-10 pb-6  gap-16 max-md:gap-3 h-full">
+            <section className="flex  max-md:mt-[-4.7rem]  max-md:m-5 max-md:mb-24 rounded-3xl bg-white max-md:p-5 max-md:py-10  max-md:w-[calc(100%-1.25rem*2)]">
+              {children}
+            </section>
+            <footer className="flex items-center max-md:fixed max-md:bottom-0 bg-white  max-md:left-0 max-md:w-full  max-md:p-5 max-md:bottom-0 md:mt-auto  justify-between items-end">
+              <button className="text-cool-gray">Go Back</button>
+              <button className="bg-marine-blue text-white p-2 px-6 rounded-lg">
+                Next
+              </button>
+            </footer>
+          </section>
+        </div>
+      </body>
     </html>
   );
 }
