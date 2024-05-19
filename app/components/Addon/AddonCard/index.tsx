@@ -16,7 +16,7 @@ const AddonCard = ({
   onChange,
 }: Props) => {
   return (
-    <div
+    <button
       className={`flex cursor-pointer    items-center p-3 rounded-lg border border-light-gray gap-4 
       ${isSelected ? "bg-magnolia border-marine-blue" : "bg-white"}`}
       onClick={() => onChange(id)}
@@ -28,12 +28,12 @@ const AddonCard = ({
       >
         <img src="/assests/images/icon-checkmark.svg" alt="" />
       </div>
-      <div className="flex flex-col ">
+      <div className="flex flex-col items-start">
         <span className="text-sm font-medium text-marine-blue">{name}</span>
         <span className="text-sm font-thin text-cool-gray">{description}</span>
       </div>
       <span className="text-sm ml-auto  text-marine-blue">{`+$${rate}/mo`}</span>
-    </div>
+    </button>
   );
 };
 
