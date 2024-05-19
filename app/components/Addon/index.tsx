@@ -11,6 +11,7 @@ const Addon = (props: Props) => {
           Add-ons help enhance your gaming experience.
         </p>
       </header>
+      <section></section>
     </div>
   );
 };
