@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PlanCard from "./PlanCard";
 import Toggle from "../common/Toggle";
+import { PlanContext } from "../Steps";
 
 type Props = {};
 
 const Plan = (props: Props) => {
-  const [isYearly, setIsYearly] = useState(false);
+  const { isYearly, setIsYearly } = useContext(PlanContext);
+
   const [activePlan, setActivePlan] = useState(0);
 
   const handleToggle = (value: boolean) => {
@@ -46,7 +48,7 @@ const Plan = (props: Props) => {
       </section>
       <footer className="flex gap-5 justify-center rounded-lg p-4 bg-alabaster">
         <span className={`text-sm ${monthColor}`}>Monthly</span>
-        <Toggle handleChange={handleToggle} />
+        <Toggle handleChange={handleToggle} value={isYearly} />
         <span className={`text-sm ${toggleYearColor}`}>Yearly</span>
       </footer>
     </div>

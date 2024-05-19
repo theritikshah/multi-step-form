@@ -1,3 +1,9 @@
+"use client";
+
+import { FREE_MONTHS } from "@/app/constants";
+import { PlanContext } from "../../Steps";
+import { useContext } from "react";
+
 type Props = {
   isSelected: boolean;
   name: string;
@@ -15,6 +21,8 @@ const AddonCard = ({
   rate,
   onChange,
 }: Props) => {
+  const { isYearly, setIsYearly } = useContext(PlanContext);
+
   return (
     <button
       className={`flex cursor-pointer    items-center p-3 rounded-lg border border-light-gray gap-4 
@@ -32,7 +40,9 @@ const AddonCard = ({
         <span className="text-sm font-medium text-marine-blue">{name}</span>
         <span className="text-sm font-thin text-cool-gray">{description}</span>
       </div>
-      <span className="text-sm ml-auto  text-marine-blue">{`+$${rate}/mo`}</span>
+      <span className="text-sm ml-auto  text-marine-blue">{`${
+        !isYearly ? `+$${rate}/mo` : `+$${rate * (12 - FREE_MONTHS)}/yr`
+      }`}</span>
     </button>
   );
 };
