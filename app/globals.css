@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+ 
+
+  h1 {
+    @apply text-2xl font-bold text-marine-blue;
+  }
+
+  p {
+    @apply text-base;
+  }
+
+  .sub-title {
+    @apply text-cool-gray font-thin
+  }
+
+
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
