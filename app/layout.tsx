@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Stepper from "./components/common/Stepper";
+import Steps from "./components/Steps";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,17 +25,7 @@ export default function RootLayout({
       <body className=" flex max-md:relative w-full h-full flex-grow-1 max-md:justify-start max-md:items-start justify-center items-center bg-magnolia">
         <div className="flex  max-md:flex-col rounded-3xl md:bg-white max-md:bg-magnolia w-fit max-md:w-full max-md:p-0 p-4 ">
           <Stepper values={stepperValues} />
-          <section className="flex flex-col    bg-white max-md:bg-magnolia max-md:mx-auto  p-20 max-md:p-0 max-md:w-full max-md:m-4  pt-10 pb-6  gap-16 max-md:gap-3 h-full">
-            <section className="flex  max-md:mt-[-4.7rem]  max-md:m-5 max-md:mb-24 rounded-3xl bg-white max-md:p-5 max-md:py-10  max-md:w-[calc(100%-1.25rem*2)]">
-              {children}
-            </section>
-            <footer className="flex items-center max-md:fixed max-md:bottom-0 bg-white  max-md:left-0 max-md:w-full  max-md:p-5  md:mt-auto  justify-between ">
-              <button className="text-cool-gray">Go Back</button>
-              <button className="bg-marine-blue text-white p-2 px-6 rounded-lg">
-                Next
-              </button>
-            </footer>
-          </section>
+          <Steps>{children}</Steps>
         </div>
       </body>
     </html>
