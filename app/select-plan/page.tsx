@@ -1,4 +1,3 @@
-import React from "react";
 import Plan from "../components/Plan";
 
 type Props = {};
