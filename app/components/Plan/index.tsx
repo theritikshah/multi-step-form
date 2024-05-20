@@ -3,23 +3,35 @@
 import React, { useContext, useState } from "react";
 import PlanCard from "./PlanCard";
 import Toggle from "../common/Toggle";
-import { PlanContext } from "../Steps";
+import { FormHookContext } from "../Steps";
 
 type Props = {};
 
 const Plan = (props: Props) => {
-  const { isYearly, setIsYearly } = useContext(PlanContext);
+  const { formHook } = useContext(FormHookContext);
+  const { watch, setValue, getValues } = formHook;
 
-  const [activePlan, setActivePlan] = useState(0);
+  const isYearly = watch("isYearly");
+  const selectedPlan = watch("selectedPlan");
 
   const handleToggle = (value: boolean) => {
-    setIsYearly(value);
+    setValue("isYearly", value);
   };
 
   const plans = [
-    { name: "Arcade", rate: 9, image: "/assests/images/icon-arcade.svg" },
-    { name: "Advance", rate: 12, image: "/assests/images/icon-advanced.svg" },
-    { name: "Pro", rate: 15, image: "/assests/images/icon-pro.svg" },
+    {
+      id: 1,
+      name: "Arcade",
+      rate: 9,
+      image: "/assests/images/icon-arcade.svg",
+    },
+    {
+      id: 2,
+      name: "Advance",
+      rate: 12,
+      image: "/assests/images/icon-advanced.svg",
+    },
+    { id: 3, name: "Pro", rate: 15, image: "/assests/images/icon-pro.svg" },
   ];
 
   const monthColor = isYearly ? "text-cool-gray" : "text-marine-blue";
@@ -34,15 +46,15 @@ const Plan = (props: Props) => {
         </p>
       </header>
       <section className="flex flex-col md:flex-row gap-3 w-full">
-        {plans.map(({ name, image, rate }, index) => (
+        {plans.map(({ id, name, image, rate }, index) => (
           <PlanCard
-            key={`plan-card-${index}`}
+            key={id}
             name={name}
             image={image}
             price={rate}
             isYearly={isYearly}
-            isActive={index == activePlan}
-            onClick={() => setActivePlan(index)}
+            isActive={selectedPlan && id == selectedPlan.id}
+            onClick={() => setValue("selectedPlan", plans[index])}
           />
         ))}
       </section>
