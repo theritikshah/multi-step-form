@@ -6,7 +6,10 @@ type Props = {
 
 const Label = (props: Props) => {
   return (
-    <label className="font-thin text-marine-blue text-sm" {...props}>
+    <label
+      className="flex justify-between font-thin text-marine-blue text-sm"
+      {...props}
+    >
       {props.children}
     </label>
   );
