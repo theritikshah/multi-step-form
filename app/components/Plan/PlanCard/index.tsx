@@ -22,7 +22,7 @@ const PlanCard = ({
   return (
     <button
       // className={`flex md:flex-col md:pr-8 md:min-w-32 md:gap-6 gap-3 rounded-lg border border-light-gray p-4 w-full
-      className={`flex md:flex-col md:flex-1 md:min-w-32 md:gap-6 gap-3 rounded-lg border border-light-gray p-4 w-full
+      className={`flex md:flex-col md:flex-1  md:gap-6 gap-3 rounded-lg border border-light-gray p-4 w-full
     ${isActive && "border border-marine-blue bg-magnolia"}
     `}
       onClick={onClick}
