@@ -73,6 +73,7 @@ const Summary = (props: Props) => {
           {Object.values(selectedAddons).map((addon) => {
             return (
               <AddOnsList
+                key={`addon-${addon.name}`}
                 name={addon.name}
                 rate={addon.rate}
                 isYearly={isYearly}
