@@ -11,8 +11,14 @@ type Props = {
 export const PlanContext = createContext<any>(null);
 
 const Steps = ({ children, ...props }: Props) => {
-  const [isYearly, setIsYearly] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const path = usePathname();
+  useEffect(() => {
+    if (isLoading) {
+      setIsLoading(false);
+    }
+  }, [path]);
+    setIsLoading(true);
 
   return (
     <PlanContext.Provider value={{ isYearly, setIsYearly }}>
@@ -30,9 +36,13 @@ const Steps = ({ children, ...props }: Props) => {
           </motion.section>
         </AnimatePresence>
         <footer className="flex  items-center max-md:fixed max-md:bottom-0 bg-white  max-md:left-0 max-md:w-full  max-md:p-5  md:mt-auto  justify-between ">
-          <button className="text-cool-gray">Go Back</button>
-          <button className="bg-marine-blue text-white p-2 px-6 rounded-lg">
-            Next
+              {isLoading ? (
+                <Spinner />
+              ) : path == "/summary" ? (
+                "Confirm"
+              ) : (
+                "Next"
+              )}
           </button>
         </footer>
       </section>
@@ -41,3 +51,8 @@ const Steps = ({ children, ...props }: Props) => {
 };
 
 export default Steps;
+export function Spinner() {
+  return (
+    <div className="inline-block w-4 h-4 border-2 border-t-2 border-gray-200 border-t-transparent rounded-full animate-spin"></div>
+  );
+}
