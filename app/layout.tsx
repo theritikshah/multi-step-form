@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className=" flex h-full">
       <body className=" flex max-md:relative w-full h-full flex-grow-1 max-md:justify-start max-md:items-start justify-center items-center bg-magnolia">
-        <div className="flex md:min-w-[816px] md:w-[816px] md:h-[505px]  max-md:flex-col rounded-3xl md:bg-white max-md:bg-magnolia w-fit max-md:w-full max-md:p-0 p-4 ">
+        <div className="flex overflow-hidden md:min-w-[816px] md:w-[816px] md:h-[505px]  max-md:flex-col md:rounded-3xl md:bg-white max-md:bg-magnolia w-fit max-md:w-full max-md:p-0 p-4 ">
           <Stepper values={stepperValues} />
           <Steps>{children}</Steps>
         </div>
