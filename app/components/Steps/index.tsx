@@ -18,7 +18,25 @@ const Steps = ({ children, ...props }: Props) => {
       setIsLoading(false);
     }
   }, [path]);
+  const handleNext = () => {
     setIsLoading(true);
+    switch (path) {
+      case "/your-info":
+        router.push("/select-plan");
+        break;
+      case "/select-plan":
+        router.push("/add-ons");
+        break;
+      case "/add-ons":
+        router.push("/summary");
+        break;
+      case "/summary":
+        router.push("/summary/thank-you");
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <PlanContext.Provider value={{ isYearly, setIsYearly }}>
@@ -36,6 +54,7 @@ const Steps = ({ children, ...props }: Props) => {
           </motion.section>
         </AnimatePresence>
         <footer className="flex  items-center max-md:fixed max-md:bottom-0 bg-white  max-md:left-0 max-md:w-full  max-md:p-5  md:mt-auto  justify-between ">
+              <button className="text-cool-gray" onClick={() => router.back()}>
               {isLoading ? (
                 <Spinner />
               ) : path == "/summary" ? (
