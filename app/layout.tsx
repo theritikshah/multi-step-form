@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const stepperValues = [
-    { label: "Your Info", value: "your-info" },
+    { label: "Your Info", value: "" },
     { label: "Select-Plan", value: "select-plan" },
     { label: "Add-ons", value: "add-ons" },
     { label: "Summary", value: "summary" },
