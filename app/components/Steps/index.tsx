@@ -98,7 +98,7 @@ const Steps = ({ children, ...props }: Props) => {
             )}
             <button
               className={`bg-marine-blue text-white p-2 px-6 rounded-lg max-md:min-w-24 ${
-                path == "/your-info" ? "ml-auto" : ""
+                path == "/" ? "ml-auto" : ""
               } ${path == "/summary" ? "bg-purplish-blue" : ""}`}
               onClick={handleSubmit(handleNext)}
             >
