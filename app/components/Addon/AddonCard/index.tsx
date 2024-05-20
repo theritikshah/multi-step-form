@@ -1,7 +1,7 @@
 "use client";
 
 import { FREE_MONTHS } from "@/app/constants";
-import { PlanContext } from "../../Steps";
+import { FormHookContext } from "../../Steps";
 import { useContext } from "react";
 
 type Props = {
@@ -21,8 +21,9 @@ const AddonCard = ({
   rate,
   onChange,
 }: Props) => {
-  const { isYearly, setIsYearly } = useContext(PlanContext);
-
+  const { formHook } = useContext(FormHookContext);
+  const { watch } = formHook;
+  const isYearly = watch("isYearly");
   return (
     <button
       className={`flex cursor-pointer    items-center p-3 rounded-lg border border-light-gray gap-4 
@@ -40,7 +41,7 @@ const AddonCard = ({
         <span className="text-sm font-medium text-marine-blue">{name}</span>
         <span className="text-sm font-thin text-cool-gray">{description}</span>
       </div>
-      <span className="text-sm ml-auto  text-marine-blue">{`${
+      <span className="text-sm ml-auto  text-purplish-blue">{`${
         !isYearly ? `+$${rate}/mo` : `+$${rate * (12 - FREE_MONTHS)}/yr`
       }`}</span>
     </button>

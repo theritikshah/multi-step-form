@@ -1,21 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AddonCard from "./AddonCard";
+import { FormHookContext } from "../Steps";
 
 type Props = {};
 
-type AddonType = {
-  id: number;
-  name: string;
-  description: string;
-  [key: string]: any;
-};
-
 const Addon = (props: Props) => {
-  const [selectedAddons, setSelectedAddons] = useState<{
-    [key: number]: AddonType;
-  }>({});
+  // const [selectedAddons, setSelectedAddons] = useState<{
+  //   [key: number]: AddonType;
+  // }>({});
+
+  const { formHook } = useContext(FormHookContext);
+  const { watch, setValue } = formHook;
+
+  const selectedAddons = watch("selectedAddons");
 
   const addOns = [
     {
@@ -39,18 +38,16 @@ const Addon = (props: Props) => {
   ];
 
   const handleAddOnsChange = (id: number) => {
-    setSelectedAddons((prevAddons) => {
-      const newAddons = { ...prevAddons };
-      if (id in newAddons) {
-        delete newAddons[id];
-      } else {
-        const addon = addOns.find((addon) => addon.id === id);
-        if (addon) {
-          newAddons[id] = addon;
-        }
+    const newAddons = { ...selectedAddons };
+    if (id in newAddons) {
+      delete newAddons[id];
+    } else {
+      const addon = addOns.find((addon) => addon.id === id);
+      if (addon) {
+        newAddons[id] = addon;
       }
-      return newAddons;
-    });
+    }
+    setValue("selectedAddons", newAddons);
   };
 
   return (
@@ -68,7 +65,7 @@ const Addon = (props: Props) => {
             name={name}
             description={description}
             rate={rate}
-            isSelected={id in selectedAddons}
+            isSelected={selectedAddons && id in selectedAddons}
             onChange={handleAddOnsChange}
             key={`addon-key-${index}`}
           />
