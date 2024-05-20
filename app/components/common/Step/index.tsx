@@ -31,7 +31,7 @@ const Step = ({ count, label, value }: Props) => {
         </div>
         <div className=" flex-col hidden md:flex">
           <span className="text-xs tracking-widest  m-0 text-light-gray">{`STEP ${count}`}</span>
-          <span className="text-xs tracking-widest uppercase font-medium m-0">
+          <span className="text-xs whitespace-nowrap tracking-widest uppercase font-medium m-0">
             {label}
           </span>
         </div>
