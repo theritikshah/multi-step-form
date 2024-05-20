@@ -91,7 +91,7 @@ const Steps = ({ children, ...props }: Props) => {
         </AnimatePresence>
         {!(path == "/summary/thank-you") && (
           <footer className="flex  items-center max-md:fixed max-md:bottom-0 bg-white  max-md:left-0 max-md:w-full  max-md:p-5  md:mt-auto  justify-between ">
-            {!(path == "/your-info" || path.includes("thank-you")) && (
+            {!(path == "/" || path.includes("thank-you")) && (
               <button className="text-cool-gray" onClick={() => router.back()}>
                 Go Back
               </button>
