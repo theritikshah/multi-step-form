@@ -57,7 +57,7 @@ const Steps = ({ children, ...props }: Props) => {
   const handleNext = () => {
     setIsLoading(true);
     switch (path) {
-      case "/your-info":
+      case "/":
         router.push("/select-plan");
         break;
       case "/select-plan":
